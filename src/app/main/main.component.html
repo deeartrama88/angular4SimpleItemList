@@ -1,0 +1,16 @@
+<h1>Products list:</h1>
+<ul class="productsList">
+    <li *ngFor="let product of store" [@flyInOut]="'in'">
+        <div class="linkedArea" [routerLink]="['/product', product.id]">
+            <img src="{{ product.image }}" alt="{{ product.title }}">
+            <h3>{{ product.title }}</h3>
+            <h4>{{ product.description | slice:0:110 }}...</h4>
+            <hr>
+            <span class="prize"> {{ product.price }}$ </span>
+        </div>
+    </li>
+</ul>
+<div class="inputWrap">
+    <!--<input type="text" [textMask]="{mask: mask, placeholderChar: '\u2000'}">-->
+</div>
+

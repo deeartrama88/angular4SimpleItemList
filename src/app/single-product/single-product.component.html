@@ -1,0 +1,72 @@
+<h1>Product description:</h1>
+<div *ngIf="product" class="singleProduct">
+    <div class="productView" *ngIf="!edit">
+        <div class="productImage">
+            <img src="{{ product.image }}">
+        </div>
+        <h2>{{product.title}}</h2>
+        <div class="productDescription">
+            {{ product.description }}
+        </div>
+        <div class="price">
+            {{ product.price }}$
+        </div>
+        <hr>
+        <div class="buttons">
+            <button class="btn btn-primary" (click)="onEdit()">EDIT</button>
+            <button class="btn btn-danger" (click)="deleteProductWarning(product.id)">DELETE</button>
+        </div>
+    </div>
+    <div class="productEdit" *ngIf="edit">
+        <form
+                [formGroup]="editForm"
+                class="createProduct"
+                (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Title:</label>
+                <input
+                        formControlName="title"
+                        class="form-control"
+                        name="title"
+                        type="text">
+                <div *ngIf="!editForm.get('title').valid && editForm.get('title').touched"
+                     class="error">Title is required...</div>
+            </div>
+            <div class="form-group">
+                <label>Price:</label>
+                <input
+                        formControlName="price"
+                        class="form-control"
+                        name="price"
+                        type="number">
+                <div *ngIf="!editForm.get('price').valid && editForm.get('price').touched"
+                     class="error">Price is required...</div>
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea
+                        formControlName="description"
+                        rows="5"
+                        class="form-control"
+                        name="description">
+        </textarea>
+                <div *ngIf="!editForm.get('description').valid && editForm.get('description').touched"
+                     class="error">Description is required...</div>
+            </div>
+            <button [disabled]="editForm.valid ? '' : 'disabled'" class="btn btn-success">SAVE</button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="!product" class="productNotFound">
+    <hr>
+    <h1>Sorry, product not found...</h1>
+</div>
+
+<div class="deleteWarning" *ngIf="deleteWarningMessage">
+    <div class="message">
+        <h1>Are you sure you wanna delete this product?</h1>
+        <button class="btn btn-danger" (click)="delete()">Delete</button>
+        <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+    </div>
+</div>

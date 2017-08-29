@@ -1,0 +1,54 @@
+<h1>Create new Product:</h1>
+<hr>
+<form
+    [formGroup]="createForm"
+    class="createProduct"
+    (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Title:</label>
+        <input
+            formControlName="title"
+            class="form-control"
+            name="title"
+            type="text">
+        <div *ngIf="!createForm.get('title').valid && createForm.get('title').touched"
+             class="error">Title is required...</div>
+    </div>
+    <div class="form-group">
+        <label>Price:</label>
+        <input
+            formControlName="price"
+            class="form-control"
+            name="price"
+            type="number">
+        <div *ngIf="!createForm.get('price').valid && createForm.get('price').touched"
+             class="error">Price is required...</div>
+    </div>
+    <div class="form-group">
+        <label>Image URL:</label>
+        <input
+            formControlName="imageUrl"
+            class="form-control"
+            name="imageUrl"
+            type="text">
+        <div *ngIf="createForm.get('imageUrl').errors !== null
+                    && createForm.get('imageUrl').errors['required']
+                    && createForm.get('imageUrl').touched"
+             class="error">Price is required...</div>
+        <div *ngIf="createForm.get('imageUrl').errors !== null
+                    && createForm.get('imageUrl').errors['linkIsNotValid']"
+             class="error">Enter valid imageUrl (https://....)</div>
+    </div>
+    <div class="form-group">
+        <label>Description:</label>
+        <textarea
+            formControlName="description"
+            rows="5"
+            class="form-control"
+            name="description">
+        </textarea>
+        <div *ngIf="!createForm.get('description').valid && createForm.get('description').touched"
+             class="error">Description is required...</div>
+    </div>
+    <button [disabled]="createForm.valid ? '' : 'disabled'" class="btn btn-success">SAVE</button>
+</form>

@@ -1,1 +1,112 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body {
+    font-family: 'Roboto', sans-serif;
+}
+header .active { background: #dedede; }
+header li {
+    width: 100px;
+    padding: 10px;
+    font-size: 20px;
+    color: black;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+header li img {
+    width: 40px;
+    position: absolute;
+    left: 0;
+    top: -8px;
+}
+header { box-shadow: 0 1px 10px #bbbbbb; }
+header ul {
+    list-style: none;
+    margin: 0;
+}
+a { text-decoration: none; }
+a:hover { text-decoration: none; }
+ul.productsList li {
+    transition: all 0.2s linear;
+    display: inline-block;
+    padding: 10px;
+    box-shadow: 0 4px 10px #bebebe;
+    margin: 12px;
+    cursor: pointer;
+    text-align: center;
+    max-width: 200px;
+    border-radius: 5px;
+}
+ul.productsList li:hover {
+    box-shadow: 0 4px 15px #585858;
+}
+ul.productsList {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0;
+    padding: 0;
+    flex-flow: row wrap;
+}
+ul.productsList li img {
+    width: 100%;
+    max-width: 150px;
+    max-height: 200px;
+}
+.productsList hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+span.prize {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    color: green;
+    font-size: 20px;
+}
+.buttons {
+    text-align: right;
+    margin-top: 10px;
+}
+ul.productsList li h4 {
+    text-align: left;
+    font-size: 15px;
+    min-height: 80px;
+}
+.deleteWarning {
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+.message {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    margin: auto;
+    border-radius: 5px;
+}
+.deleteWarning button {
+    font-size: 30px;
+    padding: 10px 30px;
+}
+.createProduct {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+.createProduct button {
+    font-size: 30px;
+    padding: 10px 30px;
+}
+.error { color: red; }
+.singleProduct .price {
+    color: green;
+    font-size: 30px;
+    padding: 10px 0;
+    text-align: right;
+    font-weight: bold;
+}
+.productDescription { font-size: 20px; }
